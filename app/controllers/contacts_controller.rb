@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
     # @contact = Contact.find(params[:id])
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contact_index_url, notice: 'News was successfully destroyed.' }
+      format.html { redirect_to @contact, notice: 'News was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
