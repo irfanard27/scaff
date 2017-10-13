@@ -1,0 +1,34 @@
+<%= form_with(model: news, local: true) do |form| %>
+  <% if news.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</h2>
+
+      <ul>
+      <% news.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+
+  </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">Title</span>
+      <%= form.text_field :title, id: :news_title , :class=>'form-control'%>
+    </div>
+
+  <div class="field">
+    <%= form.label :content %>
+  </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">Content</span>
+      <%= form.text_area :content, id: :news_content , :class=>'form-control' %>
+    </div>
+
+  <div class="actions"><br>
+    <%= form.submit :class=>'btn btn-primary'%>
+  </div>
+<% end %>
