@@ -1,8 +1,13 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:edit, :show, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    @contact = Contact.all
+    if current_user.has_role? :user
+      @contact = Contact.where(owner: current_user.id)
+    else
+      @contact = Contact.all
+    end
   end
 
   def new
@@ -10,16 +15,20 @@ class ContactsController < ApplicationController
   end
 
   def show
-    # @contact = Contact.find(params[:id])
   end
 
   def edit
-    # @contact = Contact.find(params[:id])
   end
 
   def create
-    @contact = Contact.new(contact_params)
-    @contact.save
+    respond_to do |format|
+      if format.js
+        @contact = Contact.new(contact_params)
+        @contact.save
+      else
+        redirect_to @contact
+      end
+    end
   end
 
   def update
@@ -36,12 +45,15 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    # @contact = Contact.find(params[:id])
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to @contact, notice: 'News was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def test
+    render plain('tes')
   end
 
   private
