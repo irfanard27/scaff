@@ -1,9 +1,6 @@
-describe Order do
-  describe "#submit" do
 
-    before do
-      @contact = Contact.new(:name => "haha", :phone_number => '132435' , :owner=>2)
-      @order.save
-    end
+describe "#submit" do
+  it 'is pass all variable' do
+    contact = Contact.new
   end
 end
