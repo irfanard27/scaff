@@ -51,7 +51,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body" id="modal-content">
-        <%= form_with(id:'myForm', model: contact, remote:true) do |form| %>
+        <%= form_with(id:'myForm', model: contact, local:true) do |form| %>
             <% if contact.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(contact.errors.count, "error") %> prohibited this news from being saved:</h2>
@@ -99,8 +99,8 @@
 </div>
 
 <script>
-  $('form').submit(function(e){
-      e.preventDefault();
+  /*$('#myForm').live('submit',function(ev){
+      ev.preventDefault();
       var data = $(this).serialize();
 
       console.log(data);

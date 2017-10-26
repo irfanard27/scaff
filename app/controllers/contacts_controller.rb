@@ -21,14 +21,9 @@ class ContactsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      if format.js
-        @contact = Contact.new(contact_params)
-        @contact.save
-      else
-        redirect_to @contact
-      end
-    end
+      @contact = Contact.new(contact_params)
+      @contact.save
+      redirect_to @contact
   end
 
   def update
