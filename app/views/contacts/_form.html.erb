@@ -1,5 +1,6 @@
-<%= form_with(model: contact, local: true) do |form| %>
-    <% if contact.errors.any? %>
+<div class="modal-body">
+<%= form_with(model: @contact, remote: true) do |form| %>
+    <% if @contact.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(contact.errors.count, "error") %> prohibited this news from being saved:</h2>
 
@@ -36,3 +37,4 @@
       <%= form.submit :class=>'btn btn-primary'%>
     </div>
 <% end %>
+</div>

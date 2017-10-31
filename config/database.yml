@@ -37,12 +37,12 @@ development:
   password: postgres
   database : testdb
 
-  test:
+test:
   <<: *default
   host: localhost
   username: postgres
   password: postgres
-  database : testdb
+  database : testing
 
 production:
   <<: *default

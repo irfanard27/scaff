@@ -1,0 +1,13 @@
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= contact.phone_number %></td>
+    <% if can? :update, @contact %>
+    <td><%= link_to "Edit", edit_contact_path(contact), remote: true, class: "btn btn-default" %></td>
+    <% end %>
+
+    <% if can? :destroy, @contact %>
+    <td><%= link_to 'Delete', contact_delete_path(contact), remote:true ,:class=>'btn btn-danger' %></td>
+    <% end %>
+  </tr>
+<% end %>

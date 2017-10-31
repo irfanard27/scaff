@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
   #validates :name,prensence:true
-  resourcify
+  #resourcify
   validates :name, presence: true
 end
