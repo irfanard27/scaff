@@ -29,7 +29,7 @@ RSpec.describe ContactsController, type: :controller do
   # Contact. As you add validations to Contact, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'tes@mail', phone_number: '9385395', owner: 2}
   }
 
   let(:invalid_attributes) {
@@ -44,7 +44,7 @@ RSpec.describe ContactsController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       contact = Contact.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index
       expect(response).to be_success
     end
   end

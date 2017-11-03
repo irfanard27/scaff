@@ -1,0 +1,2 @@
+class Tesuser < ApplicationRecord
+end

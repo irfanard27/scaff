@@ -28,11 +28,6 @@
       <%= form.text_field :phone_number, id: :phone_number , :class=>'form-control'%>
     </div>
 
-    <div class="input-group" style="display: none">
-      <span class="input-group-addon" id="basic-addon3">Owner</span>
-      <%= form.text_field :owner, id: :owner , :class=>'form-control', value:current_user.id%>
-    </div>
-
     <div class="actions"><br>
       <%= form.submit :class=>'btn btn-primary'%>
     </div>

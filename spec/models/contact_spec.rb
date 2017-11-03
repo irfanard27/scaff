@@ -11,4 +11,10 @@ RSpec.describe Contact do
     expect(album.save)
   end
 
+  it "orders by name" do
+      andy = Contact.create!(name: "Andy", phone_number: "08746", owner: 1)
+      gema = Contact.create!(name: "gema", phone_number: "08746", owner: 2)
+
+      expect(Contact.count())
+    end
 end

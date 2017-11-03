@@ -4,11 +4,10 @@ class ContactsController < ApplicationController
 
   def index
     if current_user.has_role? :user
-      @contact = Contact.where(owner: current_user.id)
+      contact = Contact.where(owner: current_user.id)
     else
       @contact = Contact.all
     end
-
   end
 
   def show
@@ -21,7 +20,14 @@ class ContactsController < ApplicationController
 
   def create
     @contacts = Contact.all
-    @contact = Contact.create(contact_params)
+    # get_user_id = {:owner=>current_user.id}
+    # @contact = Contact.create(get_user_id.merge(contact_params))
+
+    # @contact = Contact.new(contact_params)
+    # @contact.owner = current_user.id
+    # @contact.save
+
+    @contact = current_user.contacts.create(contact_params)
   end
 
   def edit
@@ -47,7 +53,8 @@ class ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:name, :phone_number, :owner)
+    params.require(:contact).permit(:name, :phone_number)
   end
+
 
 end
